@@ -1,0 +1,4 @@
+{"total": {"lines":{"total":13,"covered":13,"skipped":0,"pct":100},"statements":{"total":13,"covered":13,"skipped":0,"pct":100},"functions":{"total":5,"covered":5,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
+,"/Users/jordanegstad/Sites/@construct/detect-theme/index.js": {"lines":{"total":11,"covered":11,"skipped":0,"pct":100},"functions":{"total":4,"covered":4,"skipped":0,"pct":100},"statements":{"total":11,"covered":11,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
+,"/Users/jordanegstad/Sites/@construct/detect-theme/matchMedia.mock": {"lines":{"total":2,"covered":2,"skipped":0,"pct":100},"functions":{"total":1,"covered":1,"skipped":0,"pct":100},"statements":{"total":2,"covered":2,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
+}

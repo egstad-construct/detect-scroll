@@ -1,0 +1,8 @@
+node_modules
+lib/api.js
+lib/index.html
+.DS_Store
+**/.DS_Store
+.vscode
+.cache
+test/dist

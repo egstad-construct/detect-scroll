@@ -1,4 +1,4 @@
-# Detect Preferred Color Scheme 🐛️ 🔍️ 👀️
+# Detect Scroll 🐛️ 🔍️ 👀️
 
 > A micro ES6 module (~0.5KB) for detecting a users `preferred-color-scheme` and watching for changes.
 

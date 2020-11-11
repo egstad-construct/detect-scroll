@@ -34,9 +34,12 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.6.1",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "jest": "^22.4.3",
-    "parcel-bundler": "^1.7.0",
-    "jest-coverage-badges": "^1.1.2"
+    "jest-coverage-badges": "^1.1.2",
+    "parcel-bundler": "^1.7.0"
   },
   "jest": {
     "verbose": true,

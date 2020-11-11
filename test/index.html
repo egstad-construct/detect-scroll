@@ -1,61 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EGSTAD • Detect Theme</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --background: black;
-      --foreground: white;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EGSTAD • Detect Theme</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --background: black;
+        --foreground: white;
+      }
 
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      background: var(--background);
-      color: var(--foreground);
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    .v {
-      margin: 2em;
-      background: rgb(1, 1, 43);
-      height: 500vh;
-    }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        background: var(--background);
+        color: var(--foreground);
+        position: relative;
+      }
 
-    .h {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-    }
+      .v {
+        margin: 2em;
+        height: 500vh;
+      }
 
-    .h-i {
-      flex: 0 0 auto;
-      background: rgb(46, 2, 2);
-      padding: 10vh;
-      width: 40vw;
-      margin: 2em;
-    }
-  </style>
-</head>
-<body>
-  <div class="v"></div>
-  <div class="h">
-    <div class="h-i">a</div>
-    <div class="h-i"></div>
-    <div class="h-i"></div>
-    <div class="h-i"></div>
-    <div class="h-i"></div>
-    <div class="h-i"></div>
-    <div class="h-i"></div>
-    <div class="h-i"></div>
-    <div class="h-i"></div>
-    <div class="h-i"></div>
-    <div class="h-i"></div>
-    <div class="h-i"></div>
-  </div>
-  <script src="./app.js"></script>
-</body>
+      .h {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        position: relative;
+      }
+
+      p {
+        margin: 0;
+        font-size: clamp(24px, 6vw, 200px);
+        text-transform: uppercase;
+        line-height: 0.8;
+      }
+
+      .h-i {
+        flex: 0 0 auto;
+        background: rgba(255,0,0,0.2);
+        height: 50vh;
+        width: 40vw;
+        margin: 2em;
+      }
+
+      .tip {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: auto;
+        z-index: 100;
+        border: 1px solid;
+        padding: 0.6em 0.4em;
+        padding-top: .75em;
+        display: flex;
+        z-index: 10;
+        background: black;
+      }
+
+      .tip.v {
+        border-color: blue;
+        color: blue;
+      }
+
+      .tip.hori {
+        color: red;
+        position: relative;
+        top: 0;
+        margin: 0 2em;
+      }
+
+      .h-wrap {
+        position: relative;
+      }
+
+      .tip > * {
+        flex: 1 1;
+      }
+
+      .tip > *:last-child {
+        text-align: right;
+      }
+
+      html,
+      button {
+        font-family: helvetica;
+        /* font-family: "Cutive Mono", monospace; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tip v">
+      <p class="state">scroll</p>
+      <p class="direction">down</p>
+    </div>
+    <div class="v"></div>
+
+    <div class="h-wrap">
+      <div class="tip hori">
+        <p class="state">state</p>
+        <p class="direction">direction</p>
+      </div>
+
+      <div class="h">
+        <div class="h-i">a</div>
+        <div class="h-i"></div>
+        <div class="h-i"></div>
+        <div class="h-i"></div>
+        <div class="h-i"></div>
+        <div class="h-i"></div>
+        <div class="h-i"></div>
+        <div class="h-i"></div>
+        <div class="h-i"></div>
+        <div class="h-i"></div>
+        <div class="h-i"></div>
+        <div class="h-i"></div>
+      </div>
+    </div>
+
+    <button class="stop">stop</button>
+    <button class="stop">Stop</button>
+    <script src="./app.js"></script>
+  </body>
 </html>

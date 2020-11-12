@@ -41,17 +41,22 @@
 
       p {
         margin: 0;
-        font-size: clamp(24px, 6vw, 200px);
+        font-size: clamp(24px, 10vw, 200px);
         text-transform: uppercase;
         line-height: 0.8;
+        letter-spacing: -0.03em;
       }
 
       .h-i {
         flex: 0 0 auto;
-        background: rgba(255,0,0,0.2);
-        height: 50vh;
-        width: 40vw;
+        border: 1px solid red;
+        height: 33vw;
+        width: 33vw;
         margin: 2em;
+      }
+
+      .h-i + .h-i {
+        margin-left: 0;
       }
 
       .tip {
@@ -95,7 +100,7 @@
 
       html,
       button {
-        font-family: helvetica;
+        font-family: 'Arial Narrow', Arial, sans-serif;
         /* font-family: "Cutive Mono", monospace; */
       }
     </style>
@@ -103,6 +108,7 @@
   <body>
     <div class="tip v">
       <p class="state">scroll</p>
+      <button class="teardown">teardown</button>
       <p class="direction">down</p>
     </div>
     <div class="v"></div>
@@ -110,11 +116,12 @@
     <div class="h-wrap">
       <div class="tip hori">
         <p class="state">state</p>
+        <button class="teardown-h">teardown</button>
         <p class="direction">direction</p>
       </div>
 
       <div class="h">
-        <div class="h-i">a</div>
+        <div class="h-i"></div>
         <div class="h-i"></div>
         <div class="h-i"></div>
         <div class="h-i"></div>

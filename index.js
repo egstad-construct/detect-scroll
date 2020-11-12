@@ -2,10 +2,23 @@ export default class detectScroll {
   constructor(el, {
     horizontal = false,
     vertical = true,
+    events = {
+      // scrollStart: null,
+      // scrollStop: null,
+      // scrollUp: null,
+      // scrollDown: null,
+      // scrollMinY: null,
+      // scrollMaxY: null,
+      // scrollLeft: null,
+      // scrollRight: null,
+      // scrollMinX: null,
+      // scrollMaxX: null,
+    },
   } = {}) {
     this.el = (el || window);
     this.x = this.getX();
     this.y = this.getY();
+    this.direction = null;
     this.isWindow = (window === el);
     this.isScrolling = false;
     this.isVertical = vertical;
@@ -13,6 +26,9 @@ export default class detectScroll {
     this.rafId = null;
     this.rafTick = 0;
     this.rafKilled = false;
+    this.teardown = this.teardown.bind(this);
+    this.onScroll = this.onScroll.bind(this);
+    this.events = events;
 
     this.setup();
     this.watchX();
@@ -20,14 +36,31 @@ export default class detectScroll {
   }
 
   setup() {
-    this.el.addEventListener('scroll', this.onScroll.bind(this), false);
+    // scroll event
+    this.el.addEventListener('scroll', this.onScroll, false);
+    this.setupScrollEvents();
+  }
+
+  setupScrollEvents() {
+    Object.entries(this.events).forEach((event) => {
+      const [key, value] = event;
+      this.el.addEventListener(key, value, false);
+    });
   }
 
   teardown() {
-    this.el.removeEventListener('scroll', this.onScroll.bind(this), false);
+    // remove scroll event + timeout + custom events
+    this.el.removeEventListener('scroll', this.onScroll, false);
     window.clearTimeout(this.timeout);
     window.cancelAnimationFrame(this.rafId);
     this.rafKilled = true;
+  }
+
+  teardownScrollEvents() {
+    Object.entries(this.events).forEach((event) => {
+      const [key, value] = event;
+      this.el.removeEventListener(key, value, false);
+    });
   }
 
   scrollTimeout() {
@@ -119,9 +152,9 @@ export default class detectScroll {
     }
 
     if (atEnd) {
-      this.dispatch('scrollEnd');
+      this.dispatch('scrollMaxX');
     } else if (atStart) {
-      this.dispatch('scrollBeginning');
+      this.dispatch('scrollMinX');
     }
 
     this.x = x;
@@ -145,16 +178,21 @@ export default class detectScroll {
     }
 
     if (atEnd) {
-      this.dispatch('scrollBottom');
+      this.dispatch('scrollMaxY');
     } else if (atStart) {
-      this.dispatch('scrollTop');
+      this.dispatch('scrollMinY');
     }
 
     this.y = y;
   }
 
   dispatch(type) {
-    this.el.dispatchEvent(new CustomEvent(type));
+    // 1. don't fire duplicate events
+    // 2. only fire the event if it's been registered in this.events
+    if (this.direction !== type && `${type}` in this.events) {
+      this.el.dispatchEvent(new CustomEvent(type));
+      this.direction = type;
+    }
   }
 
   onScroll() {
@@ -182,3 +220,22 @@ export default class detectScroll {
     this.isScrolling = false;
   }
 }
+/**
+ * VERTICAL SCROLL
+ */
+
+const scrollVInstance = new detectScroll(window, {
+  events: {
+    scrollDown: () => { console.log('down'); },
+    scrollUp: () => { console.log('up'); },
+    scrollStop: () => { console.log('stop'); },
+    scrollMinY: () => { console.log('MinY'); },
+    scrollMaxY: () => { console.log('MaxY'); },
+    scrollMinX: () => { console.log('MinX'); },
+    scrollMaxX: () => { console.log('MaxX'); },
+    scrollLeft: () => { console.log('Left'); },
+    scrollRight: () => { console.log('Right'); },
+
+  },
+});
+// scrollVInstance.teardown();

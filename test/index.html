@@ -4,10 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EGSTAD • Detect Theme</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap"
       rel="stylesheet"
     />
+
     <style>
       :root {
         --background: black;
@@ -22,98 +24,164 @@
       body {
         width: 100%;
         height: 100%;
+        min-height: 620vh;
         background: var(--background);
         color: var(--foreground);
         position: relative;
-      }
-
-      .v {
-        margin: 2em;
-        height: 500vh;
-      }
-
-      .h {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        position: relative;
-      }
-
-      p {
+        font-family: 'MS Gothic', 'Nanum Gothic Coding', monospace;
+        font-size: clamp(0.8em, 3vmin, 2em);
         margin: 0;
-        font-size: clamp(24px, 10vw, 200px);
-        text-transform: uppercase;
-        line-height: 0.8;
-        letter-spacing: -0.03em;
-      }
-
-      .h-i {
-        flex: 0 0 auto;
-        border: 1px solid red;
-        height: 33vw;
-        width: 33vw;
-        margin: 2em;
-      }
-
-      .h-i + .h-i {
-        margin-left: 0;
+        padding: 0;
       }
 
       .tip {
+        width: 100%;
+        padding: 0.6em 0.4em;
+        padding-top: 0.75em;
+        display: flex;
+        justify-content: space-between;
+        z-index: 10;
+        text-transform: uppercase;
+        mix-blend-mode: exclusion;
+      }
+
+      .tip.window {
         position: fixed;
+      }
+
+      .grid {
+        display: grid;
+        width: 100%;
+      }
+
+      .grid.v {
+        height: 400vh;
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      .grid.v .item {
+        background: red;
+        border: 1px solid black;
+      }
+      .poster {
+        width: 100%;
+        min-height: 100vh;
+        position: sticky;
         top: 0;
         left: 0;
-        right: 0;
-        height: auto;
-        z-index: 100;
-        border: 1px solid;
-        padding: 0.6em 0.4em;
-        padding-top: .75em;
-        display: flex;
-        z-index: 10;
-        background: black;
+        background: conic-gradient(from 0deg, red, orange, yellow, green, blue);
+      }
+      .poster .scroll {
+        padding: 10vmin 0.6rem 0.4rem;
+        padding-top: 10vmin;
+        /* left: 50%;
+        transform: translate3d(-50%, -50%, 0); */
       }
 
-      .tip.v {
-        border-color: blue;
-        color: blue;
+      .pill {
+        background: white;
+        color: black;
+        line-height: 1;
+        padding: 2px 4px;
       }
 
-      .tip.hori {
-        color: red;
+      .hori {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: auto;
+        white-space: nowrap;
+        mix-blend-mode: exclusion;
+      }
+
+      .poster .tip {
         position: relative;
-        top: 0;
-        margin: 0 2em;
+        bottom: 12vmin;
+        left: 0;
       }
 
-      .h-wrap {
-        position: relative;
+      .hori::-webkit-scrollbar {
+        display: none;
       }
 
-      .tip > * {
-        flex: 1 1;
+      .hori .item {
+        font-size: 12vmin;
+        display: inline-block;
+        padding: 0 0.6rem;
+        transform: translateY(0.01em);
+        font-family: 'Arial';
+        letter-spacing: -0.04em;
+        /* width: 25vw;
+        height: 25vw; */
+        /* background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(100px); */
       }
 
-      .tip > *:last-child {
-        text-align: right;
+      .blink {
+        animation: blink 2s infinite ease-in-out;
       }
 
-      html,
-      button {
-        font-family: 'Arial Narrow', Arial, sans-serif;
-        /* font-family: "Cutive Mono", monospace; */
+      @keyframes blink {
+        0%,
+        90%,
+        100% {
+          opacity: 0.4;
+          filter: blur(4px);
+        }
+        45%,
+        50%,
+        55% {
+          opacity: 1;
+          filter: blur(0);
+        }
       }
     </style>
   </head>
   <body>
-    <div class="tip v">
+    <div class="tip window">
+      <div>
+        <span class="elem pill">window</span>
+        <span class="stat">is not scrolling</span>
+        <span class="dire"></span>
+      </div>
+      <div>
+        <span>x:<span class="x">0</span></span>
+        <span>y:<span class="y">0</span></span>
+      </div>
+    </div>
+    <div class="poster">
+      <div class="hori">
+        <div class="item">
+          Detect<span class="blink">Scroll</span>.js is a performant and
+          lightweight ES6 module for detecting scroll activity.
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="grid v">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div> -->
+
+    <!-- <div class="tip v">
       <p class="state">scroll</p>
       <button class="teardown">teardown</button>
       <p class="direction">down</p>
     </div>
-    <div class="v"></div>
+    <div class="v"></div> -->
 
-    <div class="h-wrap">
+    <!-- <div class="h-wrap">
       <div class="tip hori">
         <p class="state">state</p>
         <button class="teardown-h">teardown</button>
@@ -134,10 +202,10 @@
         <div class="h-i"></div>
         <div class="h-i"></div>
       </div>
-    </div>
+    </div> -->
 
-    <button class="stop">stop</button>
-    <button class="stop">Stop</button>
+    <!-- <button class="stop">stop</button>
+    <button class="stop">Stop</button> -->
     <script src="./app.js"></script>
   </body>
 </html>

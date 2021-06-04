@@ -38,12 +38,17 @@ class detectScroll {
     this.el.addEventListener('scroll', this.onScroll, {
       passive: this.passiveMode,
     })
+    // fetch scroll positions
+    this.watchScrollPosition()
     // defines custom events to dispatch
     eventsInit(this.el, this.events)
-    // monitor scroll positions
-    this.watchScrollPosition()
     // show dispatched events
-    if (this.debugMode) console.log('Dispated Events:', this.events)
+    if (this.debugMode && process.env.NODE_ENV === 'development') {
+      console.group('Detect Scroll Debugger')
+      console.log('Element', this.el)
+      console.log('Events', this.events)
+      console.groupEnd()
+    }
     // reset value if destroyed
     this.destroyed = 0
   }
@@ -168,6 +173,7 @@ class detectScroll {
     }
 
     this.x = x
+    this.dispatch('scrollX')
   }
 
   watchY() {
@@ -195,12 +201,15 @@ class detectScroll {
     }
 
     this.y = y
+    this.dispatch('scrollY')
   }
 
   dispatch(type) {
-    const isValidOverride = typeof o === 'object' && type in this.events
+    const isValidOverride =
+      typeof this.events === 'object' && type in this.events
     const isValidDefault =
       Array.isArray(this.events) && this.events.includes(type)
+    const unthrottledEvents = ['scrollX', 'scrollY']
 
     if (this.lastDispatch !== type && (isValidOverride || isValidDefault)) {
       this.el.dispatchEvent(new CustomEvent(type))
@@ -208,6 +217,11 @@ class detectScroll {
 
       if (this.debugMode) console.info(type)
     }
+
+    if (unthrottledEvents.includes(type))
+      this.el.dispatchEvent(
+        new CustomEvent(type, { detail: { x: this.x, y: this.y } })
+      )
   }
 
   onScroll() {

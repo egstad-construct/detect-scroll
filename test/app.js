@@ -1,12 +1,5 @@
 import DetectScroll from '../index'
 
-function updateDirection(el, direction) {
-  // if (el.innerText !== direction) {
-  // eslint-disable-next-line no-param-reassign
-  el.innerText = direction
-  // }
-}
-
 function updateState(el, position) {
   if (el.innerText !== position) {
     // eslint-disable-next-line no-param-reassign
@@ -14,13 +7,94 @@ function updateState(el, position) {
   }
 }
 
-const scrollV = window
+function updateDirection(el, direction) {
+  el.innerText = direction
+}
+
+// ----------------------------------------------------------------------------
+// Window Element
+// ----------------------------------------------------------------------------
+const tool1 = document.querySelector('.tip.window')
+const poster = document.querySelector('.poster')
+const state1 = tool1.querySelector('.stat')
+const dir1 = tool1.querySelector('.dire')
+const x1 = tool1.querySelector('.x')
+const y1 = tool1.querySelector('.y')
+
+const instanceWindow = new DetectScroll(window, {
+  // debugMode: true,
+  events: {
+    scrollStart: () => {
+      updateState(state1, 'is scrolling')
+    },
+    scrollStop: () => {
+      updateState(state1, 'is not scrolling')
+      updateDirection(dir1, '')
+    },
+    scrollUp: () => {
+      updateDirection(dir1, 'up')
+    },
+    scrollDown: () => {
+      updateDirection(dir1, 'down')
+    },
+    scrollLeft: () => {
+      updateDirection(dir1, 'left')
+    },
+    scrollRight: () => {
+      updateDirection(dir1, 'right')
+    },
+    scrollX: () => {
+      updateDirection(x1, Math.round(instanceWindow.x))
+      // background:
+    },
+    scrollY: () => {
+      updateDirection(y1, Math.round(instanceWindow.y))
+      poster.style.backgroundImage = `conic-gradient(from ${
+        instanceWindow.y * 0.05
+      }deg, red, orange, yellow, green, blue)`
+
+      hori.scrollTo(instanceWindow.y, 0)
+    },
+  },
+})
+
+const hori = document.querySelector('.hori')
+const tool2 = hori.querySelector('.tip')
+const state2 = tool2.querySelector('.stat')
+const dir2 = tool2.querySelector('.dire')
+const x2 = tool2.querySelector('.x')
+const y2 = tool2.querySelector('.y')
+const instanceHori = new DetectScroll(hori, {
+  // debugMode: true,
+  events: {
+    scrollStart: () => {
+      updateState(state2, 'is scrolling')
+    },
+    scrollStop: () => {
+      updateState(state2, 'is not scrolling')
+      updateDirection(dir2, '')
+    },
+    scrollLeft: () => {
+      updateDirection(dir2, 'left')
+    },
+    scrollRight: () => {
+      updateDirection(dir2, 'right')
+    },
+    scrollX: () => {
+      updateDirection(x2, Math.round(instanceHori.x))
+    },
+  },
+})
+
+//
+
+// const scrollV = window
 // const scrollV = document.querySelector('.h')
-const teardownV = document.querySelector('.teardown')
-// eslint-disable-next-line no-unused-vars
-const tipV = document.querySelector('.tip.v')
-const vDir = tipV.querySelector('.direction')
-const vPos = tipV.querySelector('.state')
+// const teardownV = document.querySelector('.teardown')
+// // eslint-disable-next-line no-unused-vars
+// const tipV = document.querySelector('.tip.v')
+// const vDir = tipV.querySelector('.direction')
+// const vPos = tipV.querySelector('.state')
 // const scrollVInstance = new DetectScroll(scrollV, {
 // horizontal: true,
 // vertical: true,
@@ -82,14 +156,21 @@ const vPos = tipV.querySelector('.state')
 
 // Check Events from anywhere
 // Events fired: "scrollStart", "scrollStop", "scrollUp", "scrollDown", "scrollMinY", "scrollMaxY"
-const el = window
-const detectScroll = new DetectScroll(el, {
-  debugMode: true,
-  // events: {},
-})
-const foo = (ev) => {
-  console.log(ev.type)
-}
+// const el = window
+// const detectScroll = new DetectScroll(el, {
+//   // debugMode: true,
+//   events: {
+//     scrollUp: () => {
+//       console.log('u')
+//     },
+//     scrollDown: () => {
+//       console.log('d')
+//     },
+//   },
+// })
+// const foo = (ev) => {
+//   console.log(ev.type)
+// }
 
 // el.addEventListener('scrollUp', foo)
 // el.addEventListener('scrollDown', foo)
@@ -145,7 +226,7 @@ const foo = (ev) => {
 //
 //
 // // add your own events! if you do tho, you'll have to pick up your own trash tho
-teardownV.addEventListener('click', () => {
-  detectScroll.destroy()
-  console.log('teardown')
-})
+// teardownV.addEventListener('click', () => {
+//   detectScroll.destroy()
+//   console.log('teardown')
+// })

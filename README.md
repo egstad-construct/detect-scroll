@@ -25,7 +25,7 @@ npm install @egstad/detect-scroll
 
 ## Usage
 
-### Example #1
+### Example One
 
 1. Install and import `detectScroll`.
 2. Select an individual `element` you'd like to monitor the scroll activity of. Can be a string selector (ie: `'.scroll-container'`), or any valid `HTMLElement`. In our case, we'll use the `window`.
@@ -47,7 +47,7 @@ const instance = new detectScroll(window, {
 instance.destroy()
 ```
 
-### Example #2
+### Example Two
 
 Another way to get up and running with this library is to handle the events yourself. This option registers and dispatches all [Events](#Events), but you'll have to add/remove the event listeners yourself.
 
@@ -94,7 +94,7 @@ const instance = new detectScroll(window, {
 
 Scroll events are dispatched using [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent)'s. Here's a gorgeous list of all 10.
 
-If you would like to a specific selection of them, check out [this example](#Example #1).
+If you would like to a specific selection of them, check out [this example](#Example-One).
 
 | Custom Event Name | Description                                            |
 | ----------------- | ------------------------------------------------------ |

@@ -1,128 +1,151 @@
-import DetectScroll from '../index';
+import DetectScroll from '../index'
 
 function updateDirection(el, direction) {
   // if (el.innerText !== direction) {
   // eslint-disable-next-line no-param-reassign
-  el.innerText = direction;
+  el.innerText = direction
   // }
 }
 
 function updateState(el, position) {
   if (el.innerText !== position) {
     // eslint-disable-next-line no-param-reassign
-    el.innerText = position;
+    el.innerText = position
   }
 }
 
-const scrollV = window;
-const teardownV = document.querySelector('.teardown');
+const scrollV = window
+// const scrollV = document.querySelector('.h')
+const teardownV = document.querySelector('.teardown')
 // eslint-disable-next-line no-unused-vars
-const tipV = document.querySelector('.tip.v');
-const vDir = tipV.querySelector('.direction');
-const vPos = tipV.querySelector('.state');
+const tipV = document.querySelector('.tip.v')
+const vDir = tipV.querySelector('.direction')
+const vPos = tipV.querySelector('.state')
+// const scrollVInstance = new DetectScroll(scrollV, {
+// horizontal: true,
+// vertical: true,
+// events: [],
+// events: {
+//   scrollStart: () => {
+//     console.log('start')
+//     updateState(vPos, 'scrolling')
+//   },
+// },
+// events: {
+//   scrollStart: () => {
+//     console.log('start')
+//     updateState(vPos, 'scrolling')
+//   },
+// },
+// events: {
 
-const onScrollDown = () => {
-  updateDirection(vDir, 'down');
-  updateState(vPos, 'scrolling');
-};
+// },
+// })
+// console.log(scrollVInstance)
 
-const onScrollUp = () => {
-  updateDirection(vDir, 'up');
-  updateState(vPos, 'scrolling');
-};
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-const onScrollStop = () => {
-  updateDirection(vDir, 'scroll');
-  updateState(vPos, 'paused');
-};
-/**
- * VERTICAL SCROLL
- */
+// Detect Vertical Scroll
+// Events fired: "scrollStart", "scrollStop", "scrollUp", "scrollDown", "scrollMinY", "scrollMaxY"
+// const detectScroll = new DetectScroll(window)
 
-const scrollVInstance = new DetectScroll(scrollV, {
-  horizontal: false,
-  events: {
-    scrollDown: onScrollDown,
-    scrollUp: onScrollUp,
-    scrollStop: onScrollStop,
-  },
-});
+// Detect Horizontal Scroll
+// Events fired: "scrollStart", "scrollStop", "scrollLeft", "scrollRight", "scrollMinX", "scrollMaxX"
+// const detectScroll = new DetectScroll(window, {
+//   horizontal: true,
+//   vertical: false,
+// })
 
-console.log(typeof document.querySelector('.h'));
+// Detect Vertical & Horizontal Scroll
+// Fires "scrollStart", "scrollStop", "scrollUp", "scrollDown", "scrollMinY", "scrollMaxY", "scrollLeft", "scrollRight", "scrollMinX", "scrollMaxX"
+// const detectScroll = new DetectScroll(window, {
+//   horizontal: true,
+// })
 
-// add your own events! if you do tho, you'll have to pick up your own trash tho
+// Detect scroll start and stop only
+// Fires "scrollStart", "scrollStop",
+// const detectScroll = new DetectScroll(window, {
+//   vertical: false,
+//   horizontal: false,
+// })
+
+// Check Events from anywhere
+// Events fired: "scrollStart", "scrollStop", "scrollUp", "scrollDown", "scrollMinY", "scrollMaxY"
+const el = window
+const detectScroll = new DetectScroll(el, {
+  debugMode: true,
+  // events: {},
+})
+const foo = (ev) => {
+  console.log(ev.type)
+}
+
+// el.addEventListener('scrollUp', foo)
+// el.addEventListener('scrollDown', foo)
+// el.addEventListener('scrollStop', foo)
+
+// Check Events from anywhere
+// const el = window
+// const detectScroll = new DetectScroll(el, {
+//   events: {
+//     scrollStart: () => {
+//       console.log('start')
+//     },
+//     scrollStop: () => {
+//       console.log('stop')
+//     },
+//     scrollUp: () => {
+//       console.log('up')
+//     },
+//     scrollDown: () => {
+//       console.log('down')
+//     },
+//     scrollMinY: () => {
+//       console.log('top')
+//     },
+//     scrollMaxY: () => {
+//       console.log('bottom')
+//     },
+//     scrollLeft: () => {
+//       console.log('left')
+//     },
+//     scrollRight: () => {
+//       console.log('right')
+//     },
+//     scrollMinX: () => {
+//       console.log('beginning')
+//     },
+//     scrollMaxX: () => {
+//       console.log('endX')
+//     },
+//   },
+// })
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// // add your own events! if you do tho, you'll have to pick up your own trash tho
 teardownV.addEventListener('click', () => {
-  scrollVInstance.teardown();
-  // scrollV.removeEventListener('scrollDown', scrollDown);
-  // scrollV.removeEventListener('scrollUp', scrollUp);
-  // scrollV.removeEventListener('scrollStop', scrollStop);
-});
-
-// scrollV.addEventListener('scrollDown', scrollDown);
-// scrollV.addEventListener('scrollUp', scrollUp);
-// scrollV.addEventListener('scrollStop', scrollStop);
-
-// scrollV.addEventListener('scrollUp', () => {
-//   updateDirection(vDir, 'up');
-//   updateState(vPos, 'scrolling');
-// });
-
-// scrollV.addEventListener('scrollStop', () => {
-//   updateState(vPos, 'paused');
-// });
-
-// scrollV.addEventListener('scrollMinY', () => {
-//   updateDirection(vDir, 'top');
-// });
-
-// scrollV.addEventListener('scrollMaxY', () => {
-//   updateDirection(vDir, 'bottom');
-// });
-
-/**
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- */
-const scrollH = document.querySelector('.h');
-const teardownH = document.querySelector('.teardown-h');
-
-// eslint-disable-next-line no-unused-vars
-const scrollHInstance = new DetectScroll(scrollH, { horizontal: true, vertical: false });
-const tipH = document.querySelector('.hori');
-const hDir = tipH.querySelector('.direction');
-const hPos = tipH.querySelector('.state');
-
-teardownH.addEventListener('click', () => {
-  scrollHInstance.teardown();
-});
-
-scrollH.addEventListener('scrollRight', () => {
-  updateDirection(hDir, 'right');
-  updateState(hPos, 'scrolling');
-});
-
-scrollH.addEventListener('scrollLeft', () => {
-  updateDirection(hDir, 'left');
-  updateState(hPos, 'scrolling');
-});
-
-scrollH.addEventListener('scrollStop', () => {
-  updateState(hPos, 'paused');
-});
-
-scrollH.addEventListener('scrollMinX', () => {
-  updateDirection(hDir, 'beginning');
-});
-
-scrollH.addEventListener('scrollMaxX', () => {
-  updateDirection(hDir, 'end');
-});
+  detectScroll.destroy()
+  console.log('teardown')
+})

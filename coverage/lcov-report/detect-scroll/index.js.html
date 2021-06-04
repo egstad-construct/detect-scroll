@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for detect-scroll/index.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">detect-scroll</a> index.js
+    </h1>
+    <div class='clearfix'>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { getEl } from './src/getElement'
+import { eventsSetup, eventsInit, eventsDestroy } from './src/events'
+&nbsp;
+class detectScroll {
+  constructor(
+    el,
+    {
+      horizontal = false,
+      vertical = true,
+      debugMode = false,
+      events = undefined,
+    } = {}
+  ) {
+    this.el = getEl(el)
+    this.x = this.getX()
+    this.y = this.getY()
+    this.lastDispatch = null
+    this.hasScrolled = false
+    this.isWindow = window === el
+    this.isScrolling = false
+    this.isVertical = vertical
+    this.isHorizontal = horizontal
+    this.rafId = null
+    this.rafTick = 0
+    this.rafKilled = false
+    this.teardown = this.teardown.bind(this)
+    this.onScroll = this.onScroll.bind(this)
+    this.events = eventsSetup(events, this.isVertical, this.isHorizontal)
+    this.debugMode = debugMode
+    this.destroyed = null
+&nbsp;
+    this.init()
+  }
+&nbsp;
+  init() {
+    // main scroll event that informs everything
+    this.el.addEventListener('scroll', this.onScroll, false)
+    // defines custom events to dispatch
+    eventsInit(this.el, this.events)
+    // monitor scroll positions
+    this.watchScrollPosition()
+    // show dispatched events
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.debugMode) <span class="cstat-no" title="statement not covered" >console.warn('Dispated Events:', this.events)</span>
+    // reset value if destroyed
+    this.destroyed = 0
+  }
+&nbsp;
+  teardown() {
+    // remove scroll event + timeout + custom events
+    this.el.removeEventListener('scroll', this.onScroll, false)
+    // remove custom events
+    eventsDestroy(this.el, this.events)
+    // remove timeout (in case teardown fires mid-scroll)
+    window.clearTimeout(this.timeout)
+    // remove raf
+    window.cancelAnimationFrame(this.rafId)
+    this.rafKilled = true
+    this.destroyed = 1
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  sc</span>rollTimeout() {
+<span class="cstat-no" title="statement not covered" >    this.timeout = setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      this.onScrollEnd()</span>
+    }, 120)
+  }
+&nbsp;
+  watchScrollPosition() {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.isHorizontal) <span class="cstat-no" title="statement not covered" >this.watchX()</span>
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (this.isVertical) this.watchY()
+  }
+&nbsp;
+  getY() {
+    return this.isWindow ? window.pageYOffset : this.el.scrollTop
+  }
+&nbsp;
+  getYMax() {
+    let max = null
+&nbsp;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (this.isWindow) {
+      max = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+        document.documentElement.clientHeight
+      )
+    } else {
+<span class="cstat-no" title="statement not covered" >      max = Math.max(</span>
+        this.el.scrollHeight,
+        this.el.offsetHeight,
+        this.el.clientHeight
+      )
+    }
+&nbsp;
+    return max - window.innerHeight
+  }
+&nbsp;
+  isMaxY() {
+    return this.getY() &gt;= this.getYMax()
+  }
+&nbsp;
+  isMinY() {
+    return this.getY() &lt;= 0
+  }
+&nbsp;
+  getX() {
+    return this.isWindow ? <span class="branch-0 cbranch-no" title="branch not covered" >window.pageXOffset </span>: this.el.scrollLeft
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ge</span>tXMax() {
+    let max = <span class="cstat-no" title="statement not covered" >null</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (this.isWindow) {</span>
+<span class="cstat-no" title="statement not covered" >      max = Math.max(</span>
+        document.body.scrollWidth,
+        document.documentElement.scrollWidth,
+        document.body.offsetWidth,
+        document.documentElement.offsetWidth,
+        document.documentElement.clientWidth
+      )
+    } else {
+<span class="cstat-no" title="statement not covered" >      max = Math.max(</span>
+        this.el.scrollWidth,
+        this.el.offsetWidth,
+        this.el.clientWidth
+      )
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return max - window.innerWidth</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  is</span>MaxX() {
+<span class="cstat-no" title="statement not covered" >    return this.getX() &gt;= this.getXMax()</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  is</span>MinX() {
+<span class="cstat-no" title="statement not covered" >    return this.getX() &lt;= 0</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  wa</span>tchX() {
+    const x = <span class="cstat-no" title="statement not covered" >this.getX()</span>
+    const scrolling = <span class="cstat-no" title="statement not covered" >x !== this.x</span>
+    const scrollingLeft = <span class="cstat-no" title="statement not covered" >x &lt; this.x</span>
+    const scrollingRight = <span class="cstat-no" title="statement not covered" >x &gt; this.x</span>
+    const atEnd = <span class="cstat-no" title="statement not covered" >x !== this.x &amp;&amp; this.isMaxX()</span>
+    const atStart = <span class="cstat-no" title="statement not covered" >x !== this.x &amp;&amp; this.isMinX()</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (scrolling) {</span>
+<span class="cstat-no" title="statement not covered" >      this.onScrollStart()</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (scrollingLeft) {</span>
+<span class="cstat-no" title="statement not covered" >      this.dispatch('scrollLeft')</span>
+    } else <span class="cstat-no" title="statement not covered" >if (scrollingRight) {</span>
+<span class="cstat-no" title="statement not covered" >      this.dispatch('scrollRight')</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (atEnd) {</span>
+<span class="cstat-no" title="statement not covered" >      this.dispatch('scrollMaxX')</span>
+    } else <span class="cstat-no" title="statement not covered" >if (atStart) {</span>
+<span class="cstat-no" title="statement not covered" >      this.dispatch('scrollMinX')</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.x = x</span>
+  }
+&nbsp;
+  watchY() {
+    const y = this.getY()
+    const scrolling = y !== this.y
+    const scrollingUp = y &lt; this.y
+    const scrollingDown = y &gt; this.y
+    const atEnd = y !== this.y &amp;&amp; this.isMaxY()
+    const atStart = y !== this.y &amp;&amp; this.isMinY()
+&nbsp;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (scrolling) {
+      this.onScrollStart()
+    }
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (scrollingDown) {
+<span class="cstat-no" title="statement not covered" >      this.dispatch('scrollDown')</span>
+    } else <span class="missing-if-branch" title="if path not taken" >I</span>if (scrollingUp) {
+<span class="cstat-no" title="statement not covered" >      this.dispatch('scrollUp')</span>
+    }
+&nbsp;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (atEnd) {
+      this.dispatch('scrollMaxY')
+    }
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (atStart) {
+      this.dispatch('scrollMinY')
+    }
+&nbsp;
+    this.y = y
+  }
+&nbsp;
+  dispatch(type) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (this.lastDispatch !== type) {
+      this.el.dispatchEvent(new CustomEvent(type))
+      this.lastDispatch = type
+&nbsp;
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (this.debugMode) <span class="cstat-no" title="statement not covered" >console.info(type)</span>
+    }
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  on</span>Scroll() {
+<span class="cstat-no" title="statement not covered" >    if (this.rafKilled) <span class="cstat-no" title="statement not covered" >return</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.rafId = window.requestAnimationFrame(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      this.watchScrollPosition()</span>
+&nbsp;
+      // refresh timeout, watch for scroll stop
+<span class="cstat-no" title="statement not covered" >      window.clearTimeout(this.timeout)</span>
+<span class="cstat-no" title="statement not covered" >      this.scrollTimeout()</span>
+    })
+  }
+&nbsp;
+  onScrollStart() {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (!this.isScrolling) {
+      // this condition addresses an unwanted fire on load
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (this.hasScrolled) <span class="cstat-no" title="statement not covered" >this.dispatch('scrollStart')</span>
+      this.isScrolling = true
+      this.hasScrolled = true
+    }
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  on</span>ScrollEnd() {
+    // this condition addresses an unwanted fire on load
+<span class="cstat-no" title="statement not covered" >    if (this.hasScrolled) <span class="cstat-no" title="statement not covered" >this.dispatch('scrollStop')</span></span>
+<span class="cstat-no" title="statement not covered" >    this.isScrolling = false</span>
+  }
+}
+&nbsp;
+module.exports = detectScroll
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jun 03 2021 16:52:51 GMT-0700 (Pacific Daylight Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

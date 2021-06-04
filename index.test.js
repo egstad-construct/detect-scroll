@@ -1,68 +1,49 @@
-import './matchMedia.mock';
-import theme from './index.js';
+import detectScroll from './index'
 
+// default events
+test('Properly creates detectScroll class with default events', () => {
+  let isWorking = 0
 
-test('Light Theme', () => {
-  // make sure that events are fired
-  const spyOnWatch = jest.spyOn(theme, 'watch')  
-  const spyOnDispatch = jest.spyOn(window, 'dispatchEvent')
+  // create instance
+  new detectScroll(global.window)
+  // add manual listener
+  global.window.addEventListener('onScroll', () => {
+    isWorking = 1
+  })
+  // dispatch event
+  global.window.dispatchEvent(new CustomEvent('onScroll'))
+  expect(isWorking).toBe(1)
+})
 
-  // fire it off!
-  theme.watch()
-  
-  // theme is set to 'dark' by default in matchMedia.js
-  expect(window.matchMedia().matches === 'light').toBeFalsy()
-  expect(spyOnWatch).toHaveBeenCalled();
-  expect(spyOnDispatch).toHaveBeenCalled();
-});
+// event overrides
+test('Properly creates detectScroll class with event overrides', () => {
+  let isWorking = 0
 
+  new detectScroll(global.window, {
+    events: {
+      onScroll: () => {
+        isWorking = 1
+      },
+    },
+  })
 
-test('Dark Theme', () => {
-  // make sure that events are fired
-  const spyOnWatch = jest.spyOn(theme, 'watch')  
-  const spyOnDispatch = jest.spyOn(window, 'dispatchEvent')
+  global.window.dispatchEvent(new CustomEvent('onScroll'))
+  expect(isWorking).toBe(1)
+})
 
-  // fire it off!
-  theme.watch()
-  
-  // theme is set to 'dark' by default in matchMedia.js
-  expect(window.matchMedia().matches === 'dark').toBeTruthy()
-  expect(spyOnWatch).toHaveBeenCalled();
-  expect(spyOnDispatch).toHaveBeenCalled();
-});
+test('Properly destroyed detectScroll', () => {
+  let isWorking = 0
 
+  // create instance
+  const scroll = new detectScroll(global.window)
+  // add manual listener
+  global.window.addEventListener('onScroll', () => {
+    isWorking = 1
+  })
+  // dispatch event
+  global.window.dispatchEvent(new CustomEvent('onScroll'))
+  expect(isWorking).toBe(1)
 
-test('On Update', () => {
-  // make sure that events are fired
-  const spyOnWatch = jest.spyOn(theme, 'watch')  
-  const spyOnDispatch = jest.spyOn(window, 'dispatchEvent')
-  let fakeTheme = 'dark'
-
-  // listen for updates
-  window.addEventListener('colorSchemeUpdated', function (e) { 
-    // haven't figured out how to properly pass data through the event, 
-    // so let's fake the theme change... :)
-    fakeTheme = 'light'
-  }, false);
-
-  // fire it off!
-  theme.watch()
-  
-  // theme is set to 'dark' by default in matchMedia.js
-  expect(window.matchMedia().matches === 'dark').toBeTruthy()
-  expect(spyOnWatch).toHaveBeenCalled();
-  expect(spyOnDispatch).toHaveBeenCalled();
-  expect(fakeTheme).toBe('light');
-});
-
-
-
-test('On Destroy', () => {
-  // make sure that events are fired
-  const spyOnTeardown = jest.spyOn(theme, 'teardown')  
-
-  // fire it off!
-  theme.teardown()
-  
-  expect(spyOnTeardown).toHaveBeenCalled();
-});
+  scroll.destroy()
+  expect(scroll.destroyed).toBe(1)
+})

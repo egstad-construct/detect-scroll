@@ -23,8 +23,6 @@ Maybe you show Stacy something when she's scrolling up/down/left/right? Or maybe
 npm install @egstad/detect-scroll
 ```
 
----
-
 ## Usage
 
 ### Example #1
@@ -68,8 +66,6 @@ window.removeEventListener('scrollUp', foo)
 window.removeEventListener('scrollDown', bar)
 ```
 
----
-
 ## Default Configuration
 
 ```js
@@ -81,8 +77,6 @@ const instance = new detectScroll(window, {
   events: undefined,
 })
 ```
-
----
 
 ## Properties & Events worth knowing about
 
@@ -100,7 +94,7 @@ const instance = new detectScroll(window, {
 
 Scroll events are dispatched using [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent)'s. Here's a gorgeous list of all 10.
 
-If you would like to a specific selection of them, check out [this example](#Example-#1).
+If you would like to a specific selection of them, check out [this example](#Example #1).
 
 | Custom Event Name | Description                                            |
 | ----------------- | ------------------------------------------------------ |

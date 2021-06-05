@@ -1,6 +1,6 @@
 # Detect Scroll 📜️ 🔍️ 👀️
 
-> A performant and lightweight ES6 module for detecting scroll activity (direction + location) for X and/or Y axis
+> A performant and lightweight (~1.6kb) ES6 module for detecting scroll activity (direction + location) for X and/or Y axis
 
 [![Coverage:statements](./coverage/badge-statements.svg)](#)
 [![Coverage:functions](./coverage/badge-functions.svg)](#)
@@ -121,6 +121,7 @@ const foo = (ev) => {
 
 const instance = new detectScroll(window, {
   events: {
+    // exclude any of these and the event's won't be registered or fired
     scrollStart: foo,
     scrollStop: foo,
     scrollX: foo,

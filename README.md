@@ -44,7 +44,7 @@ const instance = new detectScroll(window, {
   },
 })
 
-// if/when you want to destroy the instance
+// if/when you want to destroy the instance and events
 instance.destroy()
 ```
 

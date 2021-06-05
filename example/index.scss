@@ -16,7 +16,7 @@ body {
   color: var(--foreground);
   position: relative;
   font-family: 'MS Gothic', 'Nanum Gothic Coding', monospace;
-  font-size: clamp(0.8em, 3vmin, 2em);
+  font-size: clamp(1em, 3vmin, 2em);
   margin: 0;
   padding: 0;
 }
@@ -101,7 +101,7 @@ body {
 }
 
 .hori .item {
-  font-size: 12vmin;
+  font-size: 13.5vmin;
   display: inline-block;
   padding: 0 0.6rem;
   transform: translateY(0.01em);

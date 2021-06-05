@@ -9,7 +9,7 @@
     "test:coverage": "jest --coverage",
     "test:badges": "npm run test:coverage && jest-coverage-badges",
     "prepublish": "npm run test:badges; npm run build",
-    "build": "webpack",
+    "build": "npm run build:example; webpack",
     "build:example": "parcel build ./example/index.html --public-url='./' --out-dir ./docs"
   },
   "repository": {

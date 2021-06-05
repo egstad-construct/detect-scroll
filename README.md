@@ -101,6 +101,8 @@ If you would like to a specific selection of them, check out [this example](#Exa
 | ----------------- | ------------------------------------------------------ |
 | `scrollStart`     | Fired when scrolling begins                            |
 | `scrollStop`      | Fired when scrolling ends                              |
+| `scrollX`         | Fired every time x position updates                    |
+| `scrollY`         | Fired every time y position updates                    |
 | `scrollUp`        | Fired when scrolling up                                |
 | `scrollDown`      | Fired when scrolling down                              |
 | `scrollLeft`      | Fired when scrolling left                              |
@@ -109,3 +111,30 @@ If you would like to a specific selection of them, check out [this example](#Exa
 | `scrollMaxY`      | Fired when bottom of element/window is reached         |
 | `scrollMinX`      | Fired when the left-most part of el/window is reached  |
 | `scrollMaxX`      | Fired when the right-most part of el/window is reached |
+
+#### Event Template 
+
+```js
+const foo = (ev) => {
+  console.log(ev.type)
+}
+
+const instance = new detectScroll(window, {
+  events: {
+    scrollUp: foo,
+    scrollDown: foo,
+    scrollStart: foo,
+    scrollStop: foo,
+    scrollX: foo,
+    scrollY: foo,
+    scrollUp: foo,
+    scrollDown: foo,
+    scrollLeft: foo,
+    scrollRight: foo,
+    scrollMinY: foo,
+    scrollMaxY: foo,
+    scrollMinX: foo,
+    scrollMaxX: foo,
+  },
+})
+```

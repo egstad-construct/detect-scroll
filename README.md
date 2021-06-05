@@ -107,10 +107,10 @@ If you would like to a specific selection of them, check out [this example](#Exa
 | `scrollDown`      | Fired when scrolling down                              |
 | `scrollLeft`      | Fired when scrolling left                              |
 | `scrollRight`     | Fired when scrolling right                             |
-| `scrollMinY`      | Fired when top of element/window is reached            |
-| `scrollMaxY`      | Fired when bottom of element/window is reached         |
 | `scrollMinX`      | Fired when the left-most part of el/window is reached  |
 | `scrollMaxX`      | Fired when the right-most part of el/window is reached |
+| `scrollMinY`      | Fired when top of element/window is reached            |
+| `scrollMaxY`      | Fired when bottom of element/window is reached         |
 
 #### Event Template 
 
@@ -129,10 +129,10 @@ const instance = new detectScroll(window, {
     scrollDown: foo,
     scrollLeft: foo,
     scrollRight: foo,
-    scrollMinY: foo,
-    scrollMaxY: foo,
     scrollMinX: foo,
     scrollMaxX: foo,
+    scrollMinY: foo,
+    scrollMaxY: foo,
   },
 })
 ```

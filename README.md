@@ -121,8 +121,6 @@ const foo = (ev) => {
 
 const instance = new detectScroll(window, {
   events: {
-    scrollUp: foo,
-    scrollDown: foo,
     scrollStart: foo,
     scrollStop: foo,
     scrollX: foo,

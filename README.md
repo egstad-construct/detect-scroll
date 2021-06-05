@@ -9,11 +9,9 @@
 
 ## Introduction
 
-The default scroll event listener is kinda dumb. Sorry internet, but it's true. Out of the box it's all, _"Hey look, a user scrolled!"_. And I'm like _"Great! But like, where?"_. And then it's all like, _"IDFK, how about you do some math and figure it out"_. Cool cool cool, thanks for that, Karen.
+The default scroll event listener is amazing and all, but isn't exactly the most usable tool out of the box. It's all, _"Hey look, a user scrolled!"_. And I'm like _"Great! But like, in what direction and where did they stop?"_. And then it's all like, _"IDFK, how about you do some math and figure it out"_.
 
-This little library adds a handful of helpful [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events)'s that can be used to do all sorts of cool internet thingies.
-
-Maybe you show Stacy something when she's scrolling up/down/left/right? Or maybe you wanna hide something from Chad when he starts/stops scrolling? Cool babes, this 'lil library will help. Best part is that I did all the math so you don't have to. Lucky!
+In short, this little library adds a handful of helpful [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events)'s which make scroll detection a little more insightful.
 
 ---
 

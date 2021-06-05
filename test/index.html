@@ -9,134 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap"
       rel="stylesheet"
     />
-
-    <style>
-      :root {
-        --background: black;
-        --foreground: white;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        width: 100%;
-        height: 100%;
-        min-height: 620vh;
-        background: var(--background);
-        color: var(--foreground);
-        position: relative;
-        font-family: 'MS Gothic', 'Nanum Gothic Coding', monospace;
-        font-size: clamp(0.8em, 3vmin, 2em);
-        margin: 0;
-        padding: 0;
-      }
-
-      .tip {
-        width: 100%;
-        padding: 0.6em 0.4em;
-        padding-top: 0.75em;
-        display: flex;
-        justify-content: space-between;
-        z-index: 10;
-        text-transform: uppercase;
-        mix-blend-mode: exclusion;
-      }
-
-      .tip.window {
-        position: fixed;
-      }
-
-      .grid {
-        display: grid;
-        width: 100%;
-      }
-
-      .grid.v {
-        height: 400vh;
-        grid-template-columns: repeat(12, 1fr);
-      }
-
-      .grid.v .item {
-        background: red;
-        border: 1px solid black;
-      }
-      .poster {
-        width: 100%;
-        min-height: 100vh;
-        position: sticky;
-        top: 0;
-        left: 0;
-        background: conic-gradient(from 0deg, red, orange, yellow, green, blue);
-      }
-      .poster .scroll {
-        padding: 10vmin 0.6rem 0.4rem;
-        padding-top: 10vmin;
-        /* left: 50%;
-        transform: translate3d(-50%, -50%, 0); */
-      }
-
-      .pill {
-        background: white;
-        color: black;
-        line-height: 1;
-        padding: 2px 4px;
-      }
-
-      .hori {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        overflow: auto;
-        white-space: nowrap;
-        mix-blend-mode: exclusion;
-      }
-
-      .poster .tip {
-        position: relative;
-        bottom: 12vmin;
-        left: 0;
-      }
-
-      .hori::-webkit-scrollbar {
-        display: none;
-      }
-
-      .hori .item {
-        font-size: 12vmin;
-        display: inline-block;
-        padding: 0 0.6rem;
-        transform: translateY(0.01em);
-        font-family: 'Arial';
-        letter-spacing: -0.04em;
-        /* width: 25vw;
-        height: 25vw; */
-        /* background: rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(100px); */
-      }
-
-      .blink {
-        animation: blink 2s infinite ease-in-out;
-      }
-
-      @keyframes blink {
-        0%,
-        90%,
-        100% {
-          opacity: 0.4;
-          filter: blur(4px);
-        }
-        45%,
-        50%,
-        55% {
-          opacity: 1;
-          filter: blur(0);
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="./index.scss" />
   </head>
   <body>
     <div class="tip window">
@@ -155,6 +28,13 @@
         <div class="item">
           Detect<span class="blink">Scroll</span>.js is a performant and
           lightweight ES6 module for detecting scroll activity.
+          <a
+            href="https://github.com/egstad-construct/detect-scroll"
+            target="_blank"
+            >GITHUB</a
+          >
+          Created by
+          <a href="https://egstad.com" target="_blank">EGSTAD</a>
         </div>
       </div>
     </div>

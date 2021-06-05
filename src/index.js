@@ -1,5 +1,5 @@
-import { getEl } from './src/getElement'
-import { eventsSetup, eventsInit, eventsDestroy } from './src/events'
+import { getEl } from './getElement'
+import { eventsSetup, eventsInit, eventsDestroy } from './events'
 
 class detectScroll {
   constructor(
@@ -17,7 +17,7 @@ class detectScroll {
     this.lastDispatch = null
     this.hasScrolled = false
     this.isWindow = window === el
-    this.isScrolling = false
+    this.isScrolling = undefined
     this.isVertical = vertical
     this.isHorizontal = horizontal
     this.rafId = null
@@ -27,8 +27,13 @@ class detectScroll {
     this.onScroll = this.onScroll.bind(this)
     this.events = eventsSetup(events, this.isVertical, this.isHorizontal)
     this.debugMode = debugMode
+    this.hasInit = 0
     this.destroyed = null
     this.passiveMode = true
+    this.scrollingU = 0
+    this.scrollingD = 0
+    this.scrollingL = 0
+    this.scrollingR = 0
 
     this.init()
   }
@@ -51,6 +56,7 @@ class detectScroll {
     }
     // reset value if destroyed
     this.destroyed = 0
+    this.hasInit = 1
   }
 
   destroy() {
@@ -158,22 +164,21 @@ class detectScroll {
 
     if (scrolling) {
       this.onScrollStart()
+
+      if (scrollingLeft && !this.scrollingL) {
+        this.dispatch('scrollLeft')
+        this.scrollingL = 1
+      } else if (scrollingRight && !this.scrollingR) {
+        this.dispatch('scrollRight')
+        this.scrollingR = 1
+      }
     }
 
-    if (scrollingLeft) {
-      this.dispatch('scrollLeft')
-    } else if (scrollingRight) {
-      this.dispatch('scrollRight')
-    }
-
-    if (atEnd) {
-      this.dispatch('scrollMaxX')
-    } else if (atStart) {
-      this.dispatch('scrollMinX')
-    }
+    if (atStart) this.dispatch('scrollMinX')
+    if (atEnd) this.dispatch('scrollMaxX')
+    if (this.x) this.dispatch('scrollX')
 
     this.x = x
-    this.dispatch('scrollX')
   }
 
   watchY() {
@@ -186,22 +191,21 @@ class detectScroll {
 
     if (scrolling) {
       this.onScrollStart()
-    }
-    if (scrollingDown) {
-      this.dispatch('scrollDown')
-    } else if (scrollingUp) {
-      this.dispatch('scrollUp')
+
+      if (scrollingDown && !this.scrollingD) {
+        this.dispatch('scrollDown')
+        this.scrollingD = 1
+      } else if (scrollingUp && !this.scrollingU) {
+        this.dispatch('scrollUp')
+        this.scrollingU = 1
+      }
     }
 
-    if (atEnd) {
-      this.dispatch('scrollMaxY')
-    }
-    if (atStart) {
-      this.dispatch('scrollMinY')
-    }
+    if (atStart) this.dispatch('scrollMinY')
+    if (atEnd) this.dispatch('scrollMaxY')
+    if (this.y) this.dispatch('scrollY')
 
     this.y = y
-    this.dispatch('scrollY')
   }
 
   dispatch(type) {
@@ -210,18 +214,22 @@ class detectScroll {
     const isValidDefault =
       Array.isArray(this.events) && this.events.includes(type)
     const unthrottledEvents = ['scrollX', 'scrollY']
+    const eventNotDuplicated = this.lastDispatch !== type
 
-    if (this.lastDispatch !== type && (isValidOverride || isValidDefault)) {
+    // start/stop/direction events fire only once
+    if (eventNotDuplicated && (isValidOverride || isValidDefault)) {
       this.el.dispatchEvent(new CustomEvent(type))
       this.lastDispatch = type
 
       if (this.debugMode) console.info(type)
     }
 
-    if (unthrottledEvents.includes(type))
-      this.el.dispatchEvent(
-        new CustomEvent(type, { detail: { x: this.x, y: this.y } })
-      )
+    // updates to x or y fire each time
+    if (unthrottledEvents.includes(type)) {
+      this.el.dispatchEvent(new CustomEvent(type))
+
+      if (this.debugMode) console.info(type)
+    }
   }
 
   onScroll() {
@@ -237,18 +245,20 @@ class detectScroll {
   }
 
   onScrollStart() {
-    if (!this.isScrolling) {
-      // this condition addresses an unwanted fire on load
-      if (this.hasScrolled) this.dispatch('scrollStart')
+    if (!this.isScrolling && this.hasInit) {
+      this.dispatch('scrollStart')
       this.isScrolling = true
-      this.hasScrolled = true
     }
+    this.hasScrolled = 1
   }
 
   onScrollEnd() {
-    // this condition addresses an unwanted fire on load
-    if (this.hasScrolled) this.dispatch('scrollStop')
+    this.dispatch('scrollStop')
     this.isScrolling = false
+    this.scrollingU = false
+    this.scrollingD = false
+    this.scrollingL = false
+    this.scrollingR = false
   }
 }
 

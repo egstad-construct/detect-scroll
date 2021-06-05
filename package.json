@@ -1,37 +1,36 @@
 {
-  "name": "@egstad/detect-theme",
-  "version": "1.4.0",
-  "description": "A micro ES6 module (~0.5KB) for detecting a users preferred-color-scheme and watching for changes.",
+  "name": "@egstad/detect-scroll",
+  "version": "1.0.0",
+  "description": "A performant and lightweight ES6 module for detecting scroll activity (direction + location) for X and/or Y axis",
   "main": "index.js",
   "scripts": {
     "start": "parcel ./test/index.html --out-dir ./test/dist",
     "test": "jest --watchAll",
     "test:coverage": "jest --coverage",
     "test:badges": "npm run test:coverage && jest-coverage-badges",
-    "prepublish": "npm run test:coverage; npm run test:badges",
+    "prepublish": "npm run test:badges; npm run build",
     "build": "webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/egstad-construct/detect-theme.git"
+    "url": "git+https://github.com/egstad-construct/detect-scroll.git"
   },
   "keywords": [
-    "prefers-color-scheme",
-    "color",
-    "scheme",
-    "theme",
-    "theme-changer",
-    "dark-mode",
-    "light-mode",
+    "Custom Scroll Event Listeners",
+    "Scroll",
+    "Event",
+    "Custom Event",
+    "Request Animation Frame",
+    "Performant Scrolling",
     "es6",
     "module"
   ],
   "author": "Jordan Egstad",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/egstad-construct/detect-theme/issues"
+    "url": "https://github.com/egstad-construct/detect-scroll/issues"
   },
-  "homepage": "https://github.com/egstad-construct/detect-theme#readme",
+  "homepage": "https://github.com/egstad-construct/detect-scroll#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.6.1",
@@ -44,6 +43,7 @@
     "jest-coverage-badges": "^1.1.2",
     "parcel-bundler": "^1.7.0",
     "prettier": "^2.3.0",
+    "sass": "^1.34.1",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"
   },
@@ -56,7 +56,8 @@
       "lcov"
     ],
     "collectCoverageFrom": [
-      "src/**.js"
+      "src/events.js",
+      "src/getElement.js"
     ]
   }
 }

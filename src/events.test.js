@@ -1,4 +1,4 @@
-import detectScroll from '../index'
+import detectScroll from './index'
 import { eventsSetup, eventsInit } from './events'
 
 // is it an array with at least one event

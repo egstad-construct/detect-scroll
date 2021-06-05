@@ -1,4 +1,4 @@
-import DetectScroll from '../index'
+import DetectScroll from '../src/index'
 
 function updateState(el, position) {
   if (el.innerText !== position) {
@@ -14,6 +14,7 @@ function updateDirection(el, direction) {
 // ----------------------------------------------------------------------------
 // Window Element
 // ----------------------------------------------------------------------------
+const hori = document.querySelector('.hori')
 const tool1 = document.querySelector('.tip.window')
 const poster = document.querySelector('.poster')
 const state1 = tool1.querySelector('.stat')
@@ -22,7 +23,8 @@ const x1 = tool1.querySelector('.x')
 const y1 = tool1.querySelector('.y')
 
 const instanceWindow = new DetectScroll(window, {
-  // debugMode: true,
+  // horizontal: false,
+  debugMode: true,
   events: {
     scrollStart: () => {
       updateState(state1, 'is scrolling')
@@ -51,40 +53,43 @@ const instanceWindow = new DetectScroll(window, {
       updateDirection(y1, Math.round(instanceWindow.y))
       poster.style.backgroundImage = `conic-gradient(from ${
         instanceWindow.y * 0.05
-      }deg, red, orange, yellow, green, blue)`
+      }deg, #101115, #298DD9, #DEE4CA, #F7BF46, #EF1A03)`
 
       hori.scrollTo(instanceWindow.y, 0)
     },
+    // scrollMinY: () => {},
+    // scrollMaxY: () => {},
+    // scrollMinX: () => {},
+    // scrollMaxX: () => {},
   },
 })
 
-const hori = document.querySelector('.hori')
-const tool2 = hori.querySelector('.tip')
-const state2 = tool2.querySelector('.stat')
-const dir2 = tool2.querySelector('.dire')
-const x2 = tool2.querySelector('.x')
-const y2 = tool2.querySelector('.y')
-const instanceHori = new DetectScroll(hori, {
-  // debugMode: true,
-  events: {
-    scrollStart: () => {
-      updateState(state2, 'is scrolling')
-    },
-    scrollStop: () => {
-      updateState(state2, 'is not scrolling')
-      updateDirection(dir2, '')
-    },
-    scrollLeft: () => {
-      updateDirection(dir2, 'left')
-    },
-    scrollRight: () => {
-      updateDirection(dir2, 'right')
-    },
-    scrollX: () => {
-      updateDirection(x2, Math.round(instanceHori.x))
-    },
-  },
-})
+// // const tool2 = hori.querySelector('.tip')
+// // const state2 = tool2.querySelector('.stat')
+// // const dir2 = tool2.querySelector('.dire')
+// // const x2 = tool2.querySelector('.x')
+// // const y2 = tool2.querySelector('.y')
+// const instanceHori = new DetectScroll(hori, {
+//   debugMode: true,
+//   // events: {
+//   // scrollStart: () => {
+//   //   updateState(state2, 'is scrolling')
+//   // },
+//   // scrollStop: () => {
+//   //   updateState(state2, 'is not scrolling')
+//   //   updateDirection(dir2, '')
+//   // },
+//   // scrollLeft: () => {
+//   //   updateDirection(dir2, 'left')
+//   // },
+//   // scrollRight: () => {
+//   //   updateDirection(dir2, 'right')
+//   // },
+//   // scrollX: () => {
+//   //   updateDirection(x2, Math.round(instanceHori.x))
+//   // },
+//   // },
+// })
 
 //
 

@@ -1,6 +1,13 @@
 const eventsDefault = ['scrollStart', 'scrollStop']
-const eventsVertical = ['scrollUp', 'scrollDown', 'scrollMinY', 'scrollMaxY']
+const eventsVertical = [
+  'scrollX',
+  'scrollUp',
+  'scrollDown',
+  'scrollMinY',
+  'scrollMaxY',
+]
 const eventsHorizontal = [
+  'scrollY',
   'scrollLeft',
   'scrollRight',
   'scrollMinX',

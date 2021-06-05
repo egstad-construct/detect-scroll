@@ -4,7 +4,7 @@
   "description": "A performant and lightweight ES6 module for detecting scroll activity (direction + location) for X and/or Y axis",
   "main": "index.js",
   "scripts": {
-    "start": "parcel ./docs/index.html --out-dir ./docs/dist",
+    "start": "parcel ./example/index.html --out-dir ./docs",
     "test": "jest --watchAll",
     "test:coverage": "jest --coverage",
     "test:badges": "npm run test:coverage && jest-coverage-badges",

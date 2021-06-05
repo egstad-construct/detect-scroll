@@ -13,9 +13,9 @@ The default scroll event listener is amazing and all, but isn't exactly the most
 
 In short, this little library adds a handful of helpful [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events)'s which make scroll detection a little more insightful.
 
-> ### [View Example](https://egstad-construct.github.io/detect-scroll/)
+> ### [View Example](https://egstad-construct.github.io/detect-scroll/){:target="\_blank"}
 >
-> _(open your console to preview debug mode)_
+> Note: Open your console to preview debug mode
 
 ---
 

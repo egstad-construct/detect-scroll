@@ -1,6 +1,6 @@
 {
   "name": "@egstad/detect-scroll",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A performant and lightweight ES6 module for detecting scroll activity (direction + location) for X and/or Y axis",
   "main": "index.js",
   "scripts": {

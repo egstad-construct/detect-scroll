@@ -230,7 +230,14 @@ export default class DetectScroll {
 
     // start/stop/direction events fire only once
     if (eventNotDuplicated && (isValidOverride || isValidDefault)) {
-      this.el.dispatchEvent(new CustomEvent(type))
+      this.el.dispatchEvent(
+        new CustomEvent(type, {
+          detail: {
+            x: this.x,
+            y: this.y,
+          },
+        })
+      )
       this.lastDispatch = type
 
       if (this.debugMode) console.info(type)

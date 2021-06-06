@@ -1,5 +1,5 @@
 TN:
-SF:/mnt/c/Users/egstad/Documents/Development/_construct-npm-packages/detect-scroll/src/events.js
+SF:src/events.js
 FN:17,eventsSetup
 FN:36,eventsInit
 FN:38,(anonymous_2)
@@ -56,7 +56,7 @@ BRF:19
 BRH:16
 end_of_record
 TN:
-SF:/mnt/c/Users/egstad/Documents/Development/_construct-npm-packages/detect-scroll/src/getElement.js
+SF:src/getElement.js
 FN:1,getEl
 FN:14,isElement
 FNF:2

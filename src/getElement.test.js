@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { getEl } from './getElement'
 
 test('Properly runs getEl', () => {

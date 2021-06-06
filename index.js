@@ -1,7 +1,7 @@
-import { getEl } from './getElement'
-import { eventsSetup, eventsInit, eventsDestroy } from './events'
+import { getEl } from './src/getElement'
+import { eventsSetup, eventsInit, eventsDestroy } from './src/events'
 
-class detectScroll {
+export default class DetectScroll {
   constructor(
     el,
     {
@@ -261,5 +261,3 @@ class detectScroll {
     this.scrollingR = false
   }
 }
-
-module.exports = detectScroll

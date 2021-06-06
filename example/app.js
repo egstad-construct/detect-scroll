@@ -1,4 +1,4 @@
-import DetectScroll from '../src/index'
+import DetectScroll from '../index.js'
 
 function updateState(el, position) {
   if (el.innerText !== position) {

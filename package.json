@@ -9,7 +9,7 @@
     "test:coverage": "jest --coverage",
     "test:badges": "npm run test:coverage && jest-coverage-badges",
     "prepublish": "npm run test:badges; npm run build",
-    "build": "npm run build:example; webpack",
+    "build": "npm run build:example",
     "build:example": "parcel build ./example/index.html --public-url='./' --out-dir ./docs"
   },
   "repository": {
@@ -35,20 +35,17 @@
   },
   "homepage": "https://github.com/egstad-construct/detect-scroll#readme",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.6.1",
+    "@babel/core": "^7.14.3",
     "eslint": "^7.13.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.4.0",
-    "jest": "^22.4.3",
+    "jest": "^27.0.4",
     "jest-coverage-badges": "^1.1.2",
-    "parcel-bundler": "^1.7.0",
+    "parcel-bundler": "^1.12.5",
     "prettier": "^2.3.0",
-    "sass": "^1.34.1",
-    "webpack": "^5.4.0",
-    "webpack-cli": "^4.2.0"
+    "sass": "^1.34.1"
   },
   "jest": {
     "verbose": true,

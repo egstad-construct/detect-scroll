@@ -159,7 +159,7 @@ function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArra
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -169,7 +169,7 @@ function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread n
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
@@ -219,12 +219,17 @@ function eventsDestroy(element, events) {
 function typeOf(events) {
   return _typeof(events) === 'object' && Object.keys(events).length > 0 && !Array.isArray(events);
 }
-},{}],"../src/index.js":[function(require,module,exports) {
+},{}],"../index.js":[function(require,module,exports) {
 "use strict";
 
-var _getElement = require("./getElement");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
-var _events = require("./events");
+var _getElement = require("./src/getElement");
+
+var _events = require("./src/events");
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -234,8 +239,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var detectScroll = /*#__PURE__*/function () {
-  function detectScroll(el) {
+var DetectScroll = /*#__PURE__*/function () {
+  function DetectScroll(el) {
     var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
         _ref$horizontal = _ref.horizontal,
         horizontal = _ref$horizontal === void 0 ? true : _ref$horizontal,
@@ -246,7 +251,7 @@ var detectScroll = /*#__PURE__*/function () {
         _ref$events = _ref.events,
         events = _ref$events === void 0 ? undefined : _ref$events;
 
-    _classCallCheck(this, detectScroll);
+    _classCallCheck(this, DetectScroll);
 
     this.el = (0, _getElement.getEl)(el);
     this.x = this.getX();
@@ -274,7 +279,7 @@ var detectScroll = /*#__PURE__*/function () {
     this.init();
   }
 
-  _createClass(detectScroll, [{
+  _createClass(DetectScroll, [{
     key: "init",
     value: function init() {
       // main scroll event that informs everything
@@ -496,14 +501,14 @@ var detectScroll = /*#__PURE__*/function () {
     }
   }]);
 
-  return detectScroll;
+  return DetectScroll;
 }();
 
-module.exports = detectScroll;
-},{"./getElement":"../src/getElement.js","./events":"../src/events.js"}],"app.js":[function(require,module,exports) {
+exports.default = DetectScroll;
+},{"./src/getElement":"../src/getElement.js","./src/events":"../src/events.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
-var _index = _interopRequireDefault(require("../src/index"));
+var _index = _interopRequireDefault(require("../index.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -723,7 +728,7 @@ var instanceWindow = new _index.default(window, {
 //   detectScroll.destroy()
 //   console.log('teardown')
 // })
-},{"../src/index":"../src/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../index.js":"../index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -751,7 +756,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51676" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64260" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

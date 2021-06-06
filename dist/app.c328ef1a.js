@@ -402,6 +402,7 @@ var DetectScroll = /*#__PURE__*/function () {
       var scrollingRight = x > this.x;
       var atEnd = x !== this.x && this.isMaxX();
       var atStart = x !== this.x && this.isMinX();
+      this.x = x;
 
       if (scrolling) {
         this.onScrollStart();
@@ -420,7 +421,6 @@ var DetectScroll = /*#__PURE__*/function () {
       if (atStart) this.dispatch('scrollMinX');
       if (atEnd) this.dispatch('scrollMaxX');
       if (this.x) this.dispatch('scrollX');
-      this.x = x;
     }
   }, {
     key: "watchY",
@@ -431,6 +431,7 @@ var DetectScroll = /*#__PURE__*/function () {
       var scrollingDown = y > this.y;
       var atEnd = y !== this.y && this.isMaxY();
       var atStart = y !== this.y && this.isMinY();
+      this.y = y;
 
       if (scrolling) {
         this.onScrollStart();
@@ -449,7 +450,6 @@ var DetectScroll = /*#__PURE__*/function () {
       if (atStart) this.dispatch('scrollMinY');
       if (atEnd) this.dispatch('scrollMaxY');
       if (this.y) this.dispatch('scrollY');
-      this.y = y;
     }
   }, {
     key: "dispatch",
@@ -575,6 +575,7 @@ var instanceWindow = new _index.default(window, {
       updateDirection(y1, Math.round(instanceWindow.y));
       poster.style.backgroundImage = "conic-gradient(from ".concat(instanceWindow.y * 0.05, "deg, #101115, #298DD9, #DEE4CA, #F7BF46, #EF1A03)");
       hori.scrollTo(instanceWindow.y, 0);
+      console.log(instanceWindow.y);
     } // scrollMaxY: () => {},
     // scrollMinX: () => {},
     // scrollMaxX: () => {},
@@ -767,7 +768,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58039" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56494" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

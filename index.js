@@ -170,6 +170,8 @@ export default class DetectScroll {
     const atEnd = x !== this.x && this.isMaxX()
     const atStart = x !== this.x && this.isMinX()
 
+    this.x = x
+
     if (scrolling) {
       this.onScrollStart()
 
@@ -187,8 +189,6 @@ export default class DetectScroll {
     if (atStart) this.dispatch('scrollMinX')
     if (atEnd) this.dispatch('scrollMaxX')
     if (this.x) this.dispatch('scrollX')
-
-    this.x = x
   }
 
   watchY() {
@@ -198,6 +198,8 @@ export default class DetectScroll {
     const scrollingDown = y > this.y
     const atEnd = y !== this.y && this.isMaxY()
     const atStart = y !== this.y && this.isMinY()
+
+    this.y = y
 
     if (scrolling) {
       this.onScrollStart()
@@ -216,8 +218,6 @@ export default class DetectScroll {
     if (atStart) this.dispatch('scrollMinY')
     if (atEnd) this.dispatch('scrollMaxY')
     if (this.y) this.dispatch('scrollY')
-
-    this.y = y
   }
 
   dispatch(type) {

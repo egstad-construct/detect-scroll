@@ -56,6 +56,7 @@ const instanceWindow = new DetectScroll(window, {
       }deg, #101115, #298DD9, #DEE4CA, #F7BF46, #EF1A03)`
 
       hori.scrollTo(instanceWindow.y, 0)
+      console.log(instanceWindow.y)
     },
     // scrollMaxY: () => {},
     // scrollMinX: () => {},

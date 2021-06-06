@@ -39,14 +39,18 @@ export default class DetectScroll {
   }
 
   init() {
+    // fetch x&y
+    if (this.isHorizontal) this.getX()
+    if (this.isVertical) this.getY()
+
+    // defines custom events to dispatch
+    eventsInit(this.el, this.events)
+
     // main scroll event that informs everything
     this.el.addEventListener('scroll', this.onScroll, {
       passive: this.passiveMode,
     })
-    // fetch scroll positions
-    this.watchScrollPosition()
-    // defines custom events to dispatch
-    eventsInit(this.el, this.events)
+
     // show dispatched events
     if (this.debugMode && process.env.NODE_ENV === 'development') {
       console.group('Detect Scroll Debugger')
@@ -54,6 +58,10 @@ export default class DetectScroll {
       console.log('Events', this.events)
       console.groupEnd()
     }
+
+    // watch for changes
+    this.watchScrollPosition()
+
     // reset value if destroyed
     this.destroyed = 0
     this.hasInit = 1

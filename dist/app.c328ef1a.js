@@ -282,22 +282,25 @@ var DetectScroll = /*#__PURE__*/function () {
   _createClass(DetectScroll, [{
     key: "init",
     value: function init() {
-      // main scroll event that informs everything
+      // fetch x&y
+      if (this.isHorizontal) this.getX();
+      if (this.isVertical) this.getY(); // defines custom events to dispatch
+
+      (0, _events.eventsInit)(this.el, this.events); // main scroll event that informs everything
+
       this.el.addEventListener('scroll', this.onScroll, {
         passive: this.passiveMode
-      }); // fetch scroll positions
-
-      this.watchScrollPosition(); // defines custom events to dispatch
-
-      (0, _events.eventsInit)(this.el, this.events); // show dispatched events
+      }); // show dispatched events
 
       if (this.debugMode && "development" === 'development') {
         console.group('Detect Scroll Debugger');
         console.log('Element', this.el);
         console.log('Events', this.events);
         console.groupEnd();
-      } // reset value if destroyed
+      } // watch for changes
 
+
+      this.watchScrollPosition(); // reset value if destroyed
 
       this.destroyed = 0;
       this.hasInit = 1;
@@ -563,8 +566,7 @@ var instanceWindow = new _index.default(window, {
       updateDirection(y1, Math.round(instanceWindow.y));
       poster.style.backgroundImage = "conic-gradient(from ".concat(instanceWindow.y * 0.05, "deg, #101115, #298DD9, #DEE4CA, #F7BF46, #EF1A03)");
       hori.scrollTo(instanceWindow.y, 0);
-    } // scrollMinY: () => {},
-    // scrollMaxY: () => {},
+    } // scrollMaxY: () => {},
     // scrollMinX: () => {},
     // scrollMaxX: () => {},
 
@@ -756,7 +758,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64260" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63820" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -176,8 +176,10 @@ export default class DetectScroll {
       if (scrollingLeft && !this.scrollingL) {
         this.dispatch('scrollLeft')
         this.scrollingL = 1
+        this.scrollingR = 0
       } else if (scrollingRight && !this.scrollingR) {
         this.dispatch('scrollRight')
+        this.scrollingL = 0
         this.scrollingR = 1
       }
     }
@@ -203,8 +205,10 @@ export default class DetectScroll {
       if (scrollingDown && !this.scrollingD) {
         this.dispatch('scrollDown')
         this.scrollingD = 1
+        this.scrollingU = 0
       } else if (scrollingUp && !this.scrollingU) {
         this.dispatch('scrollUp')
+        this.scrollingD = 0
         this.scrollingU = 1
       }
     }

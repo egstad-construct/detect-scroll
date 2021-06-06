@@ -409,8 +409,10 @@ var DetectScroll = /*#__PURE__*/function () {
         if (scrollingLeft && !this.scrollingL) {
           this.dispatch('scrollLeft');
           this.scrollingL = 1;
+          this.scrollingR = 0;
         } else if (scrollingRight && !this.scrollingR) {
           this.dispatch('scrollRight');
+          this.scrollingL = 0;
           this.scrollingR = 1;
         }
       }
@@ -436,8 +438,10 @@ var DetectScroll = /*#__PURE__*/function () {
         if (scrollingDown && !this.scrollingD) {
           this.dispatch('scrollDown');
           this.scrollingD = 1;
+          this.scrollingU = 0;
         } else if (scrollingUp && !this.scrollingU) {
           this.dispatch('scrollUp');
+          this.scrollingD = 0;
           this.scrollingU = 1;
         }
       }
@@ -463,7 +467,12 @@ var DetectScroll = /*#__PURE__*/function () {
 
 
       if (unthrottledEvents.includes(type)) {
-        this.el.dispatchEvent(new CustomEvent(type));
+        this.el.dispatchEvent(new CustomEvent(type, {
+          detail: {
+            x: this.x,
+            y: this.y
+          }
+        }));
         if (this.debugMode) console.info(type);
       }
     }
@@ -758,7 +767,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49476" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58039" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

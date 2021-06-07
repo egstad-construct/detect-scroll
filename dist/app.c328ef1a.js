@@ -265,6 +265,7 @@ var DetectScroll = /*#__PURE__*/function () {
     this.rafId = null;
     this.rafTick = 0;
     this.rafKilled = false;
+    this.timeout = null;
     this.destroy = this.destroy.bind(this);
     this.onScroll = this.onScroll.bind(this);
     this.events = (0, _events.eventsSetup)(events, this.isVertical, this.isHorizontal);
@@ -321,6 +322,7 @@ var DetectScroll = /*#__PURE__*/function () {
       this.rafKilled = true;
       this.events = undefined;
       this.destroyed = 1;
+      this.hasInit = 0;
     }
   }, {
     key: "scrollTimeout",
@@ -460,19 +462,19 @@ var DetectScroll = /*#__PURE__*/function () {
       var eventNotDuplicated = this.lastDispatch !== type; // start/stop/direction events fire only once
 
       if (eventNotDuplicated && (isValidOverride || isValidDefault)) {
-        this.el.dispatchEvent(new CustomEvent(type));
-        this.lastDispatch = type;
-        if (this.debugMode) console.info(type);
-      } // updates to x or y fire each time
-
-
-      if (unthrottledEvents.includes(type)) {
         this.el.dispatchEvent(new CustomEvent(type, {
           detail: {
             x: this.x,
             y: this.y
           }
         }));
+        this.lastDispatch = type;
+        if (this.debugMode) console.info(type);
+      } // updates to x or y fire each time
+
+
+      if (unthrottledEvents.includes(type)) {
+        this.el.dispatchEvent(new CustomEvent(type));
         if (this.debugMode) console.info(type);
       }
     }
@@ -545,7 +547,7 @@ var state1 = tool1.querySelector('.stat');
 var dir1 = tool1.querySelector('.dire');
 var x1 = tool1.querySelector('.x');
 var y1 = tool1.querySelector('.y');
-var instanceWindow = new _index.default(window, {
+window.detectScroll = new _index.default(window, {
   // horizontal: false,
   debugMode: true,
   events: {
@@ -556,7 +558,7 @@ var instanceWindow = new _index.default(window, {
       updateState(state1, 'is not scrolling');
       updateDirection(dir1, '');
     },
-    scrollUp: function scrollUp() {
+    scrollUp: function scrollUp(ev) {
       updateDirection(dir1, 'up');
     },
     scrollDown: function scrollDown() {
@@ -569,13 +571,13 @@ var instanceWindow = new _index.default(window, {
       updateDirection(dir1, 'right');
     },
     scrollX: function scrollX() {
-      updateDirection(x1, Math.round(instanceWindow.x)); // background:
+      updateDirection(x1, Math.round(window.detectScroll.x)); // background:
     },
-    scrollY: function scrollY() {
-      updateDirection(y1, Math.round(instanceWindow.y));
-      poster.style.backgroundImage = "conic-gradient(from ".concat(instanceWindow.y * 0.05, "deg, #101115, #298DD9, #DEE4CA, #F7BF46, #EF1A03)");
-      hori.scrollTo(instanceWindow.y, 0);
-      console.log(instanceWindow.y);
+    scrollY: function scrollY(ev) {
+      var y = window.detectScroll ? window.detectScroll.y : 0;
+      updateDirection(y1, Math.round(y));
+      poster.style.backgroundImage = "conic-gradient(from ".concat(y * 0.05, "deg, #101115, #298DD9, #DEE4CA, #F7BF46, #EF1A03)");
+      hori.scrollTo(y, 0); // console.log(instanceWindow.y)
     } // scrollMaxY: () => {},
     // scrollMinX: () => {},
     // scrollMaxX: () => {},
@@ -768,7 +770,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56494" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60197" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

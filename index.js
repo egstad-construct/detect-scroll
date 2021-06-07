@@ -23,6 +23,7 @@ export default class DetectScroll {
     this.rafId = null
     this.rafTick = 0
     this.rafKilled = false
+    this.timeout = null
     this.destroy = this.destroy.bind(this)
     this.onScroll = this.onScroll.bind(this)
     this.events = eventsSetup(events, this.isVertical, this.isHorizontal)
@@ -81,6 +82,7 @@ export default class DetectScroll {
     this.rafKilled = true
     this.events = undefined
     this.destroyed = 1
+    this.hasInit = 0
   }
 
   scrollTimeout() {
@@ -245,14 +247,7 @@ export default class DetectScroll {
 
     // updates to x or y fire each time
     if (unthrottledEvents.includes(type)) {
-      this.el.dispatchEvent(
-        new CustomEvent(type, {
-          detail: {
-            x: this.x,
-            y: this.y,
-          },
-        })
-      )
+      this.el.dispatchEvent(new CustomEvent(type))
 
       if (this.debugMode) console.info(type)
     }

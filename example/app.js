@@ -22,7 +22,7 @@ const dir1 = tool1.querySelector('.dire')
 const x1 = tool1.querySelector('.x')
 const y1 = tool1.querySelector('.y')
 
-const instanceWindow = new DetectScroll(window, {
+window.detectScroll = new DetectScroll(window, {
   // horizontal: false,
   debugMode: true,
   events: {
@@ -33,7 +33,7 @@ const instanceWindow = new DetectScroll(window, {
       updateState(state1, 'is not scrolling')
       updateDirection(dir1, '')
     },
-    scrollUp: () => {
+    scrollUp: (ev) => {
       updateDirection(dir1, 'up')
     },
     scrollDown: () => {
@@ -46,17 +46,19 @@ const instanceWindow = new DetectScroll(window, {
       updateDirection(dir1, 'right')
     },
     scrollX: () => {
-      updateDirection(x1, Math.round(instanceWindow.x))
+      updateDirection(x1, Math.round(window.detectScroll.x))
       // background:
     },
-    scrollY: () => {
-      updateDirection(y1, Math.round(instanceWindow.y))
+    scrollY: (ev) => {
+      const y = window.detectScroll ? window.detectScroll.y : 0
+      updateDirection(y1, Math.round(y))
+
       poster.style.backgroundImage = `conic-gradient(from ${
-        instanceWindow.y * 0.05
+        y * 0.05
       }deg, #101115, #298DD9, #DEE4CA, #F7BF46, #EF1A03)`
 
-      hori.scrollTo(instanceWindow.y, 0)
-      console.log(instanceWindow.y)
+      hori.scrollTo(y, 0)
+      // console.log(instanceWindow.y)
     },
     // scrollMaxY: () => {},
     // scrollMinX: () => {},

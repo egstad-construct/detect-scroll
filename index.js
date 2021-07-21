@@ -247,7 +247,14 @@ export default class DetectScroll {
 
     // updates to x or y fire each time
     if (unthrottledEvents.includes(type)) {
-      this.el.dispatchEvent(new CustomEvent(type))
+      this.el.dispatchEvent(
+        new CustomEvent(type, {
+          detail: {
+            x: this.x,
+            y: this.y,
+          },
+        })
+      )
 
       if (this.debugMode) console.info(type)
     }

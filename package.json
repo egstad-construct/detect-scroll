@@ -35,17 +35,17 @@
   },
   "homepage": "https://github.com/egstad-construct/detect-scroll#readme",
   "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "eslint": "^7.13.0",
+    "@babel/core": "^7.14.8",
+    "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.4.0",
-    "jest": "^27.0.4",
+    "jest": "^27.0.6",
     "jest-coverage-badges": "^1.1.2",
     "parcel-bundler": "^1.12.5",
-    "prettier": "^2.3.0",
-    "sass": "^1.34.1"
+    "prettier": "^2.3.2",
+    "sass": "^1.35.2"
   },
   "jest": {
     "verbose": true,

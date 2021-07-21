@@ -159,7 +159,7 @@ function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArra
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -185,11 +185,11 @@ function eventsSetup(eventOverrides, isVertical, isHorizontal) {
     return eventOverrides;
   } // if overrides are an invalid format
   else if (eventOverrides && !typeOf(eventOverrides)) {
-      console.error("Whoops! 'events' must be an object with at least one prop.");
-    } // defaults
-    else {
-        return [].concat(eventsDefault, _toConsumableArray(isVertical ? eventsVertical : []), _toConsumableArray(isHorizontal ? eventsHorizontal : []));
-      }
+    console.error("Whoops! 'events' must be an object with at least one prop.");
+  } // defaults
+  else {
+    return [].concat(eventsDefault, _toConsumableArray(isVertical ? eventsVertical : []), _toConsumableArray(isHorizontal ? eventsHorizontal : []));
+  }
 }
 
 function eventsInit(element, events) {
@@ -474,7 +474,12 @@ var DetectScroll = /*#__PURE__*/function () {
 
 
       if (unthrottledEvents.includes(type)) {
-        this.el.dispatchEvent(new CustomEvent(type));
+        this.el.dispatchEvent(new CustomEvent(type, {
+          detail: {
+            x: this.x,
+            y: this.y
+          }
+        }));
         if (this.debugMode) console.info(type);
       }
     }
@@ -577,7 +582,8 @@ window.detectScroll = new _index.default(window, {
       var y = window.detectScroll ? window.detectScroll.y : 0;
       updateDirection(y1, Math.round(y));
       poster.style.backgroundImage = "conic-gradient(from ".concat(y * 0.05, "deg, #101115, #298DD9, #DEE4CA, #F7BF46, #EF1A03)");
-      hori.scrollTo(y, 0); // console.log(instanceWindow.y)
+      hori.scrollTo(y, 0);
+      console.log(ev); // console.log(instanceWindow.y)
     } // scrollMaxY: () => {},
     // scrollMinX: () => {},
     // scrollMaxX: () => {},
@@ -770,7 +776,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60197" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62694" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

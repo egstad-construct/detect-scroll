@@ -32,6 +32,8 @@ window.detectScroll = new DetectScroll(window, {
     scrollStop: () => {
       updateState(state1, 'is not scrolling')
       updateDirection(dir1, '')
+      updateDirection(x1, Math.round(window.detectScroll.x))
+      updateDirection(y1, Math.round(window.detectScroll.y))
     },
     scrollUp: (ev) => {
       updateDirection(dir1, 'up')

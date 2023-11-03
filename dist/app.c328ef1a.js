@@ -185,7 +185,8 @@ function eventsSetup(eventOverrides, isVertical, isHorizontal) {
     return eventOverrides;
   } // if overrides are an invalid format
   else if (eventOverrides && !typeOf(eventOverrides)) {
-    console.error("Whoops! 'events' must be an object with at least one prop.");
+    // console.error(`Whoops! 'events' must be an object with at least one prop.`)
+    return;
   } // defaults
   else {
     return [].concat(eventsDefault, _toConsumableArray(isVertical ? eventsVertical : []), _toConsumableArray(isHorizontal ? eventsHorizontal : []));
@@ -342,7 +343,7 @@ var DetectScroll = /*#__PURE__*/function () {
   }, {
     key: "getY",
     value: function getY() {
-      return this.isWindow ? window.pageYOffset : this.el.scrollTop;
+      return this.isWindow ? window.scrollY : this.el.scrollTop;
     }
   }, {
     key: "getYMax",
@@ -370,7 +371,7 @@ var DetectScroll = /*#__PURE__*/function () {
   }, {
     key: "getX",
     value: function getX() {
-      return this.isWindow ? window.pageXOffset : this.el.scrollLeft;
+      return this.isWindow ? window.scrollX : this.el.scrollLeft;
     }
   }, {
     key: "getXMax",
@@ -562,6 +563,8 @@ window.detectScroll = new _index.default(window, {
     scrollStop: function scrollStop() {
       updateState(state1, 'is not scrolling');
       updateDirection(dir1, '');
+      updateDirection(x1, Math.round(window.detectScroll.x));
+      updateDirection(y1, Math.round(window.detectScroll.y));
     },
     scrollUp: function scrollUp(ev) {
       updateDirection(dir1, 'up');
@@ -776,7 +779,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62694" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58157" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

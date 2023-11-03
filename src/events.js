@@ -21,7 +21,8 @@ export function eventsSetup(eventOverrides, isVertical, isHorizontal) {
   }
   // if overrides are an invalid format
   else if (eventOverrides && !typeOf(eventOverrides)) {
-    console.error(`Whoops! 'events' must be an object with at least one prop.`)
+    // console.error(`Whoops! 'events' must be an object with at least one prop.`)
+    return
   }
   // defaults
   else {

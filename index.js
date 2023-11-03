@@ -97,7 +97,7 @@ export default class DetectScroll {
   }
 
   getY() {
-    return this.isWindow ? window.pageYOffset : this.el.scrollTop
+    return this.isWindow ? window.scrollY : this.el.scrollTop
   }
 
   getYMax() {
@@ -131,7 +131,7 @@ export default class DetectScroll {
   }
 
   getX() {
-    return this.isWindow ? window.pageXOffset : this.el.scrollLeft
+    return this.isWindow ? window.scrollX : this.el.scrollLeft
   }
 
   getXMax() {
